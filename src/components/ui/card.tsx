@@ -2,7 +2,7 @@ import React from "react";
 
 export function Card({ children, className }: { children: React.ReactNode; className?: string }) {
   return (
-    <div className={`rounded-lg bg-card text-card-foreground h-fit p-6 ${className}`}>
+    <div className={`rounded-lg bg-card text-card-foreground h-fit p-4 ${className}`}>
       {children}
     </div>
   );

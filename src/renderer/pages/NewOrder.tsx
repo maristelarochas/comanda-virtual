@@ -1,14 +1,16 @@
 import { Button } from "../../components/ui/button";
 import { Card, CardHeader, CardTitle, CardBody } from "../../components/ui/card";
 import Config from "./Config";
-import React from "react";
+import React, { useState } from "react";
 import "./../index.css";
 import Input from "../../components/ui/input";
 import Label from "../../components/ui/label";
-import { Product } from "../../types";
+import { OrderItem, Product } from "../../types";
 import ProductList from "../../components/ProductList";
+import OrderItemsList from "../../components/OrderItemsList";
 
 export default function NewOrder() {
+const [orderItems, setOrderItems] = useState<OrderItem[]>([]);
 
 const addOrderItem = (item: OrderItem) => {
     setOrderItems([...orderItems, { ...item, id: Date.now() }]);
@@ -46,6 +48,14 @@ const addOrderItem = (item: OrderItem) => {
             </CardHeader>
             <CardBody>
               <ProductList onAddItem={addOrderItem} />
+            </CardBody>
+          </Card>
+          <Card className="border">
+            <CardHeader>
+              <CardTitle>Itens do Pedido</CardTitle>
+            </CardHeader>
+            <CardBody>
+              <OrderItemsList items={orderItems} />
             </CardBody>
           </Card>
         </div>

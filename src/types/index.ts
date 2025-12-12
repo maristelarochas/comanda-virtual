@@ -8,3 +8,13 @@ export interface Product {
   priceMedium: number;
   priceLarge: number;
 }
+
+export interface OrderItem {
+  id: number;
+  productId: number;
+  productName: string;
+  size: "small" | "medium" | "large";
+  quantity: number;
+  price: number;
+  observations?: string;
+}

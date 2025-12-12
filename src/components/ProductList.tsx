@@ -1,5 +1,6 @@
 import { faker } from "@faker-js/faker";
 import { Card } from "./ui/card";
+import { Plus } from "lucide-react";
 
 
 interface ProductListProps {
@@ -26,28 +27,29 @@ export default function ProductList({ onAddItem }: ProductListProps) {
           className="border rounded cursor-pointer hover:bg-muted transition"
           onClick={() => onAddItem(product)}
         >
-          <Card>
-            <div className="font-semibold">{product.name}</div>
-
-            <div className="flex flex-wrap gap-1 mt-2">
-
-              {product.hasSmall && (
-                <div className="inline-flex items-center px-2 font-semibold rounded-full bg-gray-100 text-sm text-muted-foreground">
-                  P: R$ {product.priceSmall}
+          <Card className="p-4 hover:bg-accent/50 cursor-pointer transition-colors group">
+            <div className="flex justify-between items-start">
+              <div className="flex-1">
+                <div className="font-semibold">{product.name}</div>
+                <div className="flex flex-wrap gap-1 mt-2">
+                  {product.hasSmall && (
+                    <div className="inline-flex items-center px-2 font-semibold rounded-full bg-gray-100 text-sm text-muted-foreground">
+                      P: R$ {product.priceSmall}
+                    </div>
+                  )}
+                  {product.hasMedium && (
+                    <div className="inline-flex items-center px-1 font-semibold rounded-full bg-gray-100 text-sm text-muted-foreground">
+                      M: R$ {product.priceMedium}
+                    </div>
+                  )}
+                  {product.hasLarge && (
+                    <div className="inline-flex items-center px-1 font-semibold rounded-full bg-gray-100 text-sm text-muted-foreground">
+                      G: R$ {product.priceLarge}
+                    </div>
+                  )}
                 </div>
-              )}
-
-              {product.hasMedium && (
-                <div className="inline-flex items-center px-1 font-semibold rounded-full bg-gray-100 text-sm text-muted-foreground">
-                  M: R$ {product.priceMedium}
-                </div>
-              )}
-
-              {product.hasLarge && (
-                <div className="inline-flex items-center px-1 font-semibold rounded-full bg-gray-100 text-sm text-muted-foreground">
-                  G: R$ {product.priceLarge}
-                </div>
-              )}
+              </div>
+              <Plus className="h-5 w-5 text-muted-foreground group-hover:text-primary transition-colors" />
             </div>
           </Card>
         </div>
