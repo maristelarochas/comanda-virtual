@@ -5,9 +5,15 @@ import React from "react";
 import "./../index.css";
 import Input from "../../components/ui/input";
 import Label from "../../components/ui/label";
-
+import { Product } from "../../types";
+import ProductList from "../../components/ProductList";
 
 export default function NewOrder() {
+
+const addOrderItem = (item: OrderItem) => {
+    setOrderItems([...orderItems, { ...item, id: Date.now() }]);
+  };
+
   return (
     <div className="min-h-screen bg-muted/30">
       <header className="bg-card border-b border-border sticky top-0 z-10 shadow-sm">
@@ -32,6 +38,14 @@ export default function NewOrder() {
               <Input type="number" id="Phone" placeholder="Telefone do cliente"/>
               <Label>Observações</Label>
               <Input type="text" id="Observations" placeholder="Observações"/>
+            </CardBody>
+          </Card>
+          <Card className="border">
+            <CardHeader>
+              <CardTitle>Produtos</CardTitle>
+            </CardHeader>
+            <CardBody>
+              <ProductList onAddItem={addOrderItem} />
             </CardBody>
           </Card>
         </div>
